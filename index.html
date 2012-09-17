@@ -1,0 +1,50 @@
+<!doctype html>
+<head>
+	<title>viewport tester</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		.ruler {
+			position: absolute;
+			top: 3px;
+			left: 3px;
+			background: red;
+			width: 3px;
+			height: 3px;
+		}
+	</style>
+</head>
+<div id="horizontal" class="ruler"></div>
+<div id="vertical" class="ruler"></div>
+<div id="display">
+	<span id="display-w"></span>px × <span id="display-h"></span>px
+</div>
+<script type="text/javascript">
+	var displayWNode = document.getElementById('display-w')
+	var displayHNode = document.getElementById('display-h')
+	var horizontalRulerNode = document.getElementById('horizontal')
+	var verticalRulerNode = document.getElementById('vertical')
+	var rulerOffset = 5
+
+	function display(w, h) {
+		displayWNode.innerHTML = w
+		displayHNode.innerHTML = h
+	}
+
+	function ruler(w, h) {
+		horizontalRulerNode.style.width = w - rulerOffset * 2 + 'px'
+		verticalRulerNode.style.height = h - rulerOffset * 2 + 'px'
+	}
+
+	function update() {
+		var w = window.innerWidth
+		var h = window.innerHeight
+		display(w, h)
+		ruler(w, h)
+	}
+
+	update()
+
+	window.addEventListener('resize', function() {
+		update()
+	})
+</script>
