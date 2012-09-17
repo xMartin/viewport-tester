@@ -2,7 +2,7 @@
 <head>
 	<title>viewport tester</title>
 	<meta charset="utf-8">
-	<meta name="viewport">
+	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
 	<style type="text/css">
 		.ruler {
 			position: absolute;
@@ -19,15 +19,11 @@
 <div id="display">
 	<span id="display-w"></span>px × <span id="display-h"></span>px
 </div>
-<div>
-	<input type="checkbox" id="zoom"> <lable for="zoom">disable viewport zoom</label>
-</div>
 <script type="text/javascript">
 	var displayWNode = document.getElementById('display-w')
 	var displayHNode = document.getElementById('display-h')
 	var horizontalRulerNode = document.getElementById('horizontal')
 	var verticalRulerNode = document.getElementById('vertical')
-	var viewportNode = document.querySelector("meta[name=viewport]")
 	var rulerOffset = 5
 
 	function display(w, h) {
@@ -53,12 +49,4 @@
 		update()
 	})
 
-	document.getElementById('zoom').addEventListener('change', function(event) {
-		if (event.target.checked) {
-			viewportNode.content = 'width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;'
-		}
-		else {
-			viewportNode.content = ''
-		}
-	})
 </script>
